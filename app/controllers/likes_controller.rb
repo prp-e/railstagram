@@ -16,6 +16,7 @@ class LikesController < ApplicationController
             flash[:notice] = "You can't unlike this post"
         else 
             @like.destroy
+            redirect_to post_path(@post)
         end 
     end
 
