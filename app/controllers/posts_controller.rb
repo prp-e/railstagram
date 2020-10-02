@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.comments.all 
-    @comment = @post.comment.build
+    @comment = @post.comments.build
   end
 
   # GET /posts/new
