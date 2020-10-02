@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :find_post
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   
@@ -16,7 +15,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = current_user.comments.build
+    @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -26,11 +25,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = current_user.comments.build(comment_params)
+
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params)
+    @comment.user = current_user 
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -72,9 +74,5 @@ class CommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def comment_params
       params.require(:comment).permit(:body, :user_id, :post_id)
-    end
-
-    def find_post 
-      @post = @comment.find_by(post_id: :post_id)
     end
 end
