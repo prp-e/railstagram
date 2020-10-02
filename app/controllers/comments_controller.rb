@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_post 
   # GET /comments
   # GET /comments.json
   def index
@@ -14,7 +15,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = current_user.comments.build
+    @comment = @post.comments.build
   end
 
   # GET /comments/1/edit
@@ -24,7 +25,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = current_user.comments.build(comment_params)
+    @comment = @post.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -70,5 +71,9 @@ class CommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def comment_params
       params.require(:comment).permit(:body)
+    end
+
+    def find_post 
+      @post = Post.find(post_id)
     end
 end
