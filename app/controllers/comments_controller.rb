@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = current_user.comments.build
+  end
 
   # GET /comments/1/edit
   def edit
