@@ -28,7 +28,9 @@
 <div>
   <% @comments.each do |comment| %>
     <div>
-      <%= comment.body %>
+    <p>
+     <em><strong><%= User.find(comment.user_id).username %></strong> said: </em><%= comment.body %>
+    </p>
     </div>
   <% end %>
 </div>
