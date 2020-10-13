@@ -15,5 +15,6 @@
  */
 
  .bidi_comments {
-     unicode-bidi: bidi-override;
+     direction: rtl; 
+     unicode-bidi: normal;
  }
