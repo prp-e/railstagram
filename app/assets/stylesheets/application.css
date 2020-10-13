@@ -18,3 +18,7 @@
      direction: rtl; 
      unicode-bidi: normal;
  }
+
+ .profile_posts {
+     margin-right: 25px;
+ }

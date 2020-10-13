@@ -1,7 +1,7 @@
 <h1> <%= @user.username %> </h1>
 <div class="row">
     <% @posts.each do |post| %>
-        <div class="column-sm">
+        <div class="column-sm profile_posts">
         <a href="/posts/<%= post.id %>"><img src="<%= post.image %>" width=256 height=256></a>
         </div>
     <%  end %>
