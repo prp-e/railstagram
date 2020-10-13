@@ -1,37 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class = "row">
+  <div class="col">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @post.image %>
-</p>
-
-<p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
-</p>
-
-<p>
-  <strong> Likes: </strong>
-  <%= @post.likes.count %>
-</p>
-
-<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
-<% if pre_like %>
-  <%= link_to 'Unlike', post_like_path(@post, pre_like), :method => :delete %> |
-<% else %> 
-  <%= link_to 'Like', post_likes_path(@post), :method => :post %> | 
-<% end %> 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-
-<h2> Comments </h2>
-<div>
-  <% @comments.each do |comment| %>
-    <div>
     <p>
-     <em><strong><%= User.find(comment.user_id).username %></strong> said: </em><%= comment.body %>
+      <img src="<%= @post.image %>" />
     </p>
+
+    <p>
+      <strong>Caption:</strong>
+      <%= @post.caption %>
+    </p>
+
+    <p>
+      <strong> Likes: </strong>
+      <%= @post.likes.count %>
+    </p>
+
+    <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+    <% if pre_like %>
+      <%= link_to 'Unlike', post_like_path(@post, pre_like), :method => :delete %> |
+    <% else %> 
+      <%= link_to 'Like', post_likes_path(@post), :method => :post %> | 
+    <% end %> 
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Back', posts_path %>
+  </div>
+  <div class="col">
+    <h2> Comments </h2>
+    <div>
+      <% @comments.each do |comment| %>
+        <div>
+        <p>
+        <em><strong><%= User.find(comment.user_id).username %></strong> said: </em><%= comment.body %>
+        </p>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+  </div>
 </div>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
