@@ -7,6 +7,7 @@
     <tr>
       <th>Image</th>
       <th>Caption</th>
+      <th> Posted by: </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +17,15 @@
       <tr>
         <td><img src=<%= post.image %> height=300px width=400px /></td>
         <td><%= post.caption %></td>
+        <td><%= post.user_id %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td>
+          <% if post.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+          <% else %>
+            <p> Not editable by you </p>
+          <% end %>
+        </td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
