@@ -32,9 +32,12 @@
     <div>
       <% @comments.each do |comment| %>
         <div>
-        <p>
-        <em><strong><%= User.find(comment.user_id).username %></strong> said: </em><%= comment.body %>
-        </p>
+          <p>
+            <em><strong><%= User.find(comment.user_id).username %></strong> said: </em>
+          </p>
+          <p class="bidi_comments">
+            <%= comment.body %>
+          </p>
         </div>
       <% end %>
     </div>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .bidi_comments {
+     unicode-bidi: bidi-override;
+ }
