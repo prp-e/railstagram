@@ -36,6 +36,10 @@
         </div>
       <% end %>
     </div>
-    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    <% if user_signed_in? %>
+      <%= render partial: 'comments/form', locals: { comment: @comment } %>
+    <% else %>
+      <p><strong> Please login to continue </strong></p>
+      <p><%= link_to 'Sign in', new_user_session_path %></p>
   </div>
 </div>
