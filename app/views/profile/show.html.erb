@@ -21,6 +21,10 @@
 </div>
 
 <div class="row">
+    <%= link_to 'Follow', profile_follows_path(@user), :method => :post %>
+</div>
+
+<div class="row">
     <% @posts.each do |post| %>
         <div class="column-sm profile_posts">
         <a href="/posts/<%= post.id %>"><img src="<%= post.image %>" width=256 height=256></a>

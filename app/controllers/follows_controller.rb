@@ -7,10 +7,11 @@ class FollowsController < ApplicationController
         else 
             flash[:notice] = "Not followed successfully!"
         end 
+        redirect_to profile_path(@user)
     end 
 
     private
     def find_user
-        @user.find_by(username: params[:profile_id])
+        @user = User.find(params[:profile_id])
     end
 end
