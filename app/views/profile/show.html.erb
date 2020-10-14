@@ -21,11 +21,14 @@
 </div>
 
 <div class="row">
-    <% if current_user.favorited?@user %>
-        <%= link_to 'Unfollow', "/profile/#{@user.id}/follows", :method => :delete %>
-    <% else %>
-        <%= link_to 'Follow', profile_follows_path(@user), :method => :post %>
-    <% end %>
+    <% pre_follow = @user.favorited.find {|follower| follower.favoritor_id == current_user.id} %>
+    <% if @user.id != current_user.id %>
+        <% if current_user.favorited?@user %>
+            <%= link_to 'Unfollow', "/profile/#{@user.id}/follows/#{pre_follow.id}", :method => :delete %>
+        <% else %>
+            <%= link_to 'Follow', profile_follows_path(@user), :method => :post %>
+        <% end %>
+    <%end %>
 </div>
 
 <div class="row">
