@@ -1,4 +1,25 @@
-<h1> <%= @user.username %> </h1>
+<div class="row">
+    <div class="column">
+        <h1 style="margin-right:50px;"> <%= @user.username %> </h1>
+    </div>
+    <div class="column">
+        <div class="row">
+            <div class="column profile_posts">
+                <strong> Followers </strong>
+                <p></p>
+            </div>
+            <div class="column profile_posts">
+                <strong>  Followings </strong>
+                <p></p>
+            </div>
+            <div class="column profile_posts">
+                <strong> Posts </strong>
+                <p><%= @user.posts.length %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <% @posts.each do |post| %>
         <div class="column-sm profile_posts">
