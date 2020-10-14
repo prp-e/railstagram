@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :comments
-  resources :profile
+  resources :profile do 
+    resources :follows 
+  end 
   devise_for :users
   resources :posts do 
     resources :likes 
