@@ -1,3 +1,21 @@
 <h1> Welcome back <%= current_user.username %>! </h1>
 <div class="col">
+    <% @followings.each do |following| %>
+        <% @posts.each do |post| %>
+            <% if post.user_id == following.favoritable_id %>
+             <div class="col" align="center">
+                <div align="left">
+                    <p><strong><%= User.find(following.favoritable_id).username %> posted: </strong></p>
+                </div>
+                <img src="<%= post.image %>", width=720px height=720px />
+                <br/>
+                <div align="left">
+                    <p><strong>caption: </strong></p>
+                    <p><%= post.caption %></p>
+                    <p><a href="/posts/<%= post.id %>"> Details </a></p>
+                </div>
+             </div>
+            <% end %>
+        <% end %>
+    <% end %>
 </div>
