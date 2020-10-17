@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :timeline
   resources :comments
   resources :profile do 
     resources :follows 
