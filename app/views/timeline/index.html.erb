@@ -1,7 +1,7 @@
 <h1> Welcome back <%= current_user.username %>! </h1>
 <div class="col">
     <% @followings.each do |following| %>
-        <% @posts.each do |post| %>
+        <% @posts.reverse_each do |post| %>
             <% if post.user_id == following.favoritable_id %>
              <div class="col" align="center">
                 <div align="left">
