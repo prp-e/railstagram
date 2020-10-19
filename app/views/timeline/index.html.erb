@@ -2,10 +2,14 @@
 <div class="col">
     <% @followings.each do |following| %>
         <% @posts.reverse_each do |post| %>
-            <% if post.user_id == following.favoritable_id %>
+            <% if post.user_id == following.favoritable_id || post.user_id == current_user.id %>
              <div class="col" align="center">
                 <div align="left">
-                    <p><strong><%= User.find(following.favoritable_id).username %> posted: </strong></p>
+                    <%if post.user_id != current_user.id %>
+                        <p><strong><%= User.find(following.favoritable_id).username %> posted: </strong></p>
+                    <% else %>
+                        <p><strong><%= current_user.username %> posted: </strong></p>
+                    <% end %>
                 </div>
                 <img src="<%= post.image %>", width=720px height=720px />
                 <br/>
