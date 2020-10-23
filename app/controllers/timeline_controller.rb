@@ -1,5 +1,5 @@
 class TimelineController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:index]
     before_action :find_user 
     def index
         @followings = @user.favorites.find_all 
