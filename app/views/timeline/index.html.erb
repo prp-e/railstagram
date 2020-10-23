@@ -18,8 +18,8 @@
                 <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "btn btn-danger" %>
             </div>
         </div>
-        <% @followings.each do |following| %>
-            <% @posts.reverse_each do |post| %>
+        <% @posts.reverse_each do |post| %>
+            <% @followings.each do |following| %>
                 <% if post.user_id == following.favoritable_id || post.user_id == current_user.id %>
                 <div class="col" align="center">
                     <div align="left">
