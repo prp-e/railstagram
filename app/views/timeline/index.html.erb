@@ -1,4 +1,6 @@
  <% if !user_signed_in %>
+ <h1> Welcome to the railstagram project, dear guest! </h1>
+ <p>If you want to experience all the features of the app, please login or sign up.</p>
  <div class="row">
     <div class="col">
         <%= link_to 'Register', new_user_registration_path, :class => "btn btn-primary"%>
