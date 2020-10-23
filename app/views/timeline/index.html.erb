@@ -1,5 +1,6 @@
 <h1> Welcome back <%= current_user.username %>! </h1>
 <div class="col">
+    <a href="/posts/new" class="btn btn-primary">New Post</a>
     <% @followings.each do |following| %>
         <% @posts.reverse_each do |post| %>
             <% if post.user_id == following.favoritable_id || post.user_id == current_user.id %>
