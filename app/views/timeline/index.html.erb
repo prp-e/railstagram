@@ -1,33 +1,44 @@
-<h1> Welcome back <%= current_user.username %>! </h1>
-<div class="col">
-    <div class="row">
-        <div class="col-sm">
-            <a href="/posts/new" class="btn btn-primary">New Post</a>
-        </div>
-        <div class="col-sm">
-            <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "btn btn-danger" %>
-        </div>
+ <% if !user_signed_in %>
+ <div class="row">
+    <div class="col">
+        <%= link_to 'Register', new_user_registration_path, :class => "btn btn-primary"%>
     </div>
-    <% @followings.each do |following| %>
-        <% @posts.reverse_each do |post| %>
-            <% if post.user_id == following.favoritable_id || post.user_id == current_user.id %>
-             <div class="col" align="center">
-                <div align="left">
-                    <%if post.user_id != current_user.id %>
-                        <p><strong><%= User.find(following.favoritable_id).username %> posted: </strong></p>
-                    <% else %>
-                        <p><strong><%= current_user.username %> posted: </strong></p>
-                    <% end %>
+    <div class="col">
+        <%= link_to 'Sign in', new_user_session_path, :class => "btn btn-primary" %>
+    </div>
+</div>
+ <% else %>
+    <h1> Welcome back <%= current_user.username %>! </h1>
+    <div class="col">
+        <div class="row">
+            <div class="col-sm">
+                <a href="/posts/new" class="btn btn-primary">New Post</a>
+            </div>
+            <div class="col-sm">
+                <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, :class => "btn btn-danger" %>
+            </div>
+        </div>
+        <% @followings.each do |following| %>
+            <% @posts.reverse_each do |post| %>
+                <% if post.user_id == following.favoritable_id || post.user_id == current_user.id %>
+                <div class="col" align="center">
+                    <div align="left">
+                        <%if post.user_id != current_user.id %>
+                            <p><strong><%= User.find(following.favoritable_id).username %> posted: </strong></p>
+                        <% else %>
+                            <p><strong><%= current_user.username %> posted: </strong></p>
+                        <% end %>
+                    </div>
+                    <img src="<%= post.image %>", width=720px height=720px />
+                    <br/>
+                    <div align="left">
+                        <p><strong>caption: </strong></p>
+                        <p><%= post.caption %></p>
+                        <p><a href="/posts/<%= post.id %>"> Details </a></p>
+                    </div>
                 </div>
-                <img src="<%= post.image %>", width=720px height=720px />
-                <br/>
-                <div align="left">
-                    <p><strong>caption: </strong></p>
-                    <p><%= post.caption %></p>
-                    <p><a href="/posts/<%= post.id %>"> Details </a></p>
-                </div>
-             </div>
+                <% end %>
             <% end %>
         <% end %>
-    <% end %>
-</div>
+    </div>
+<% end %>
