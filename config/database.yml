@@ -8,21 +8,21 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: railstagram
   password: 
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: railstagram
+  database: railstagram_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: railstagram_db
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: railstagram_db
