@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_10_14_075849) do
 
-  create_table "comments", id: :integer, force: :cascade do |t|
+  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_075849) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "favorites", id: :integer, force: :cascade do |t|
+  create_table "favorites", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.integer "favoritable_id", null: false
     t.string "favoritor_type", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_075849) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
-  create_table "likes", id: :integer, force: :cascade do |t|
+  create_table "likes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_075849) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "posts", id: :integer, force: :cascade do |t|
+  create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "image"
     t.text "caption"
     t.datetime "created_at", precision: 6, null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_075849) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", id: :integer, force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

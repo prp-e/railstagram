@@ -25,7 +25,7 @@
     <% if @post.user_id == current_user.id %>
       <%= link_to 'Edit', edit_post_path(@post) %> |
     <% end %>
-    <%= link_to 'Back', posts_path %>
+    <%= link_to 'Back', "/" %>
   </div>
   <div class="col">
     <h2> Comments </h2>
