@@ -1,0 +1,8 @@
+<h1> Users Directory </h1>
+<div class="col">
+    <ul>
+        <% @users.each do |user| %>
+        <li><a href="/profile/<%= user.id %>"> <%= user.username %></a></li>
+        <% end %>
+    </ul>
+</div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :directory
   resources :timeline
   resources :comments
+  resources :users_directory
   resources :profile do 
     resources :follows 
   end 
