@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     resources :follows 
   end 
   devise_for :users
+  resources :users do 
+    member do 
+      get :confirm_email
+    end 
+  end 
   resources :posts do 
     resources :likes 
     resources :comments
